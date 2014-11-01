@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<project name="ViewConfigSelector-1.0" basedir="." default="release" xmlns:ht="happytrails">
+
+	  <!-- This is provided solely so that this package will build
+	       out-of-the-box.  Feel free to remove this as soon as you add actual
+	       content under the src/ and tst/ directories. -->
+	  <property name="allow.empty.sources.dir" value="true" />
+
+	  <import file="${happytrails.root}/happytrails.xml"/>
+	  <ht:import file="victoria-build-settings.xml" />
+	  <ht:import file="happier-trails.xml"/>
+	  
+	  <!-- Must be imported after HappierTrails' happier-trails.xml -->
+	  <ht:import file="lombok/happier-trails.xml" />
+
+	  <!-- Define HappierTrails property overrides here -->
+	  <property name="tests.additional.jvmargs" value=""/>
+
+	  <!-- Cobertura doesn't work under JDK-1.7 without UseSplitVerifier -->
+	  <property name="coverage.additional.jvmargs" value="${tests.additional.jvmargs} -XX:-UseSplitVerifier"/>
+
+	  <!-- TODO: REMOVE THIS when we have the actual opertions -->
+	  <target name="coverage-check">
+	      <cobertura-check datafile="${coverage.file}" totalbranchrate="0" totallinerate="0"/>
+	  </target>
+
+       
+</project>
